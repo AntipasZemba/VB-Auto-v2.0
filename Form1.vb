@@ -19,5 +19,10 @@ Public Class Form1
     radStandard.Checked = True
   End sub
 
+  ' Inventory Methods
+  Private Sub RefreshInventory()
+    lstInventory.DataSource = Nothing
+    lstInventory.DataSource = Inventory
+  End Sub
   
 End Class
