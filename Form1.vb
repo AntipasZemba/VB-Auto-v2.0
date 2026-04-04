@@ -24,5 +24,5 @@ Public Class Form1
     lstInventory.DataSource = Nothing
     lstInventory.DataSource = Inventory
   End Sub
-  
+
 End Class
