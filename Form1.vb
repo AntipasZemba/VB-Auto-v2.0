@@ -158,6 +158,12 @@ Public Class Form1
       Return value
   End Function
 
-  
+  ' Calculates totals and displays results
+  Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
+      Dim basePrice = GetDecimalValue(txtBasePrice)
+      Dim tradeIn = GetDecimalValue(txtTradeIn)
+
+      
+  End Sub
                         
 End Class
