@@ -76,5 +76,21 @@ Public Class Form1
     ' Refresh Display
     RefreshInventory()
   End Sub
-      
+
+  ' Deletes selected vehicle from inventory
+  Private Sub btnDeleteVehicle_Click(sender As Object, e As EventArgs) Handles btnDeleteVehicle.Click
+    Dim selected As Vehicle = CType(lstInventory.SelectedItem, Vehicle)
+
+    ' Ensure a vehicle is selected
+    If selected Is Nothing Then
+        MessageBox.Show("Select a vehicle to delete")
+        Exit Sub
+    End If
+
+    ' Confirm before deleting
+    If MessageBox.Show("Delete this vehicle?", "Confirm", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        inventory.Remove(selected)
+        RefreshInventory()
+    End If
+  End Sub
 End Class
