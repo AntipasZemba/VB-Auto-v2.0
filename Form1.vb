@@ -136,5 +136,13 @@ Public Class Form1
       Return total
   End Function
 
+  ' Returns cost based on selected finish option
+  Private Function GetFinishCost() As Decimal
+      If radPearlized.Checked Then Return 500
+      If radCustom.Checked Then Return 750
+      Return 0 ' Standard has no extra cost
+  End Function
+
   
+                        
 End Class
