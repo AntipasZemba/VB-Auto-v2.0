@@ -107,5 +107,25 @@ Public Class Form1
     End If
   End Sub
 
+  ' Search: Filters inventory based on user input
+  Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+    Dim keyword = txtSearch.Text.ToLower()
+
+    ' If search box is empty, show all vehicles
+    If keyword = "" Then
+        RefreshInventory()
+        Return
+    End If
+
+    'Filter list based on Make or Model
+    Dim filtered = inventory.Where(Function(v) _
+        v.Make.ToLower().Contains(keyword) OrElse
+        v.Model.ToLower().Contains(keyword)).ToList()
+
+    lstInventory.DataSource = Nothing
+    lstInventory.DataSource = filtered
+  End Sub
+
+  ' ===== CALCULATIONS =====
   
 End Class
