@@ -127,5 +127,14 @@ Public Class Form1
   End Sub
 
   ' ===== CALCULATIONS =====
+  ' Calculates total cost of selected accessories
+  Private Function GetAccessoriesTotal() As Decimal
+      Dim total As Decimal = 0
+      If chkSound.Checked Then total += Sound_Price
+      If chkLeather.Checked Then total += Leather_Price
+      If chkNavigation.Checked Then total += Nav_Price
+      Return total
+  End Function
+
   
 End Class
