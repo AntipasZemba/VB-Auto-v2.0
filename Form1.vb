@@ -93,4 +93,19 @@ Public Class Form1
         RefreshInventory()
     End If
   End Sub
+
+  ' Populates textboxes when a vehicle is selected
+  Private Sub lstInventory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstInventory.SelectedIndexChanged
+    Dim selected As Vehicle = CType(lstInventory.SelectedItem, Vehicle)
+
+    If selected IsNot Nothing Then
+        txtMake.Text = selected.Make
+        txtModel.Text = selected.Model
+        txtYear.Text = selected.Year.ToString()
+        txtPrice.Text = selected.Price.ToString()
+        txtBasePrice.Text = selected.Price.ToString()
+    End If
+  End Sub
+
+  
 End Class
