@@ -163,6 +163,8 @@ Public Class Form1
       Dim basePrice = GetDecimalValue(txtBasePrice)
       Dim tradeIn = GetDecimalValue(txtTradeIn)
 
+      ' Calculate additional fees
+      Dim af = GetAccessoriesTotal() + GetFinishCost()
       
   End Sub
                         
