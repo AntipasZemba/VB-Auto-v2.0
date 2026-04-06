@@ -143,6 +143,21 @@ Public Class Form1
       Return 0 ' Standard has no extra cost
   End Function
 
+  ' Safely conters textbox input to Decimal
+  Private Function GetDecimalValue(txt As TextBox) As Decimal
+      Dim value As Decimal
+
+      ' Validate numeric input
+      If Not Decimal.TryParse(txt.Text, value) Then
+          MessageBox.Show("Invalid input: Please select a vehicle or enter a base price and trade in that is 0 or greater.")
+          'MessageBox.Show("Invalid input: " & txt.Name)
+          txt.Focus()
+          Return 0
+      End If
+
+      Return value
+  End Function
+
   
                         
 End Class
