@@ -165,6 +165,12 @@ Public Class Form1
 
       ' Calculate additional fees
       Dim af = GetAccessoriesTotal() + GetFinishCost()
+
+      ' Calculate tax and totals
+      Dim tax = (basePrice + af) * Tax_Rate
+      Dim subtotal = basePrice + af + tax
+      Dim totalDue = subtotal - tradeIn
+
       
   End Sub
                         
