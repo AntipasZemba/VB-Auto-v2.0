@@ -171,7 +171,11 @@ Public Class Form1
       Dim subtotal = basePrice + af + tax
       Dim totalDue = subtotal - tradeIn
 
-      
+      ' Display results
+      lblAccessoriesFinish.Text = af.ToString("C")
+      lblTax.Text = tax.ToString("C")
+      lblSubtotal.Text = subtotal.ToString("C")
+      lblTotalDue.Text = totalDue.ToString("C")
   End Sub
                         
 End Class
