@@ -237,12 +237,17 @@ Public Class Form1
       End If
   End Sub
 
-
   ' Saves inventory automatically when form closes
   Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
       SaveInventory()
   End Sub
 
+  ' ===== PRINT RECEIPT =====
+  ' Starts the print process
+  Private Sub btnPrintReceipt_Click(sender As Object, e As EventArgs) Handles btnPrintReceipt.Click
+      PrintDocument1.Print()
+  End Sub
 
-  
+  ' Defines what gets printed on the receipt
+
 End Class
