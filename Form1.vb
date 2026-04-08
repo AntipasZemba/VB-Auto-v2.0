@@ -207,4 +207,14 @@ Public Class Form1
       Me.Close()
   End Sub
 
+  ' ===== FILE SAVE =====
+  ' Saves inventory list to a text file
+  Private Sub SaveInventory()
+      Using writer As New StreamWriter("inventory.txt")
+          For Each v In inventory
+              writer.WriteLine($"{v.Make},{v.Model},{v.Year},{v.Price}")
+          Next
+      End Using
+  End Sub
+
 End Class
