@@ -177,5 +177,28 @@ Public Class Form1
       lblSubtotal.Text = subtotal.ToString("C")
       lblTotalDue.Text = totalDue.ToString("C")
   End Sub
-                        
+
+  ' ===== CLEAR =====
+  ' Resets all input fields and selections
+  Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+      txtBasePrice.Clear()
+      txtTradeIn.Clear()
+      txtMake.Clear()
+      txtModel.Clear()
+      txtYear.Clear()
+      txtPrice.Clear()
+
+      ' Clear output labels
+      lblAccessoriesFinish.Text = ""
+      lblTax.Text = ""
+      lblSubtotal.Text = ""
+      lblTotalDue.Text = ""
+
+      ' Reset options
+      chkSound.Checked = False
+      chkLeather.Checked = False
+      chkNavigation.Checked = False
+      radStandard.Checked = True
+  End Sub
+
 End Class
