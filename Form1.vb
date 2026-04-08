@@ -217,4 +217,32 @@ Public Class Form1
       End Using
   End Sub
 
+  ' ===== FILE LOAD =====
+  ' Loads inventory from file if it exists
+  Private Sub LoadInventoryFromFile()
+      If File.Exists("inventory.txt") Then
+          Dim lines = File.ReadAllLines("inventory.txt")
+
+          For Each line In lines
+              Dim parts = line.Split(","c)
+
+              ' Create vehicle object from file data
+              inventory.Add(New Vehicle With {
+                  .Make = parts(0),
+                  .Model = parts(1),
+                  .Year = CInt(parts(2)),
+                  .Price = CDec(parts(3))
+              })
+          Next
+      End If
+  End Sub
+
+
+  ' Saves inventory automatically when form closes
+  Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+      SaveInventory()
+  End Sub
+
+
+  
 End Class
