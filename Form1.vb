@@ -249,5 +249,82 @@ Public Class Form1
   End Sub
 
   ' Defines what gets printed on the receipt
+  Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Dim g = e.Graphics
+    Dim y As Integer = 20
+
+    ' Fonts
+    Dim titleFont As New Font("Arial", 16, FontStyle.Bold)
+    Dim headerFont As New Font("Arial", 12, FontStyle.Bold)
+    Dim bodyFont As New Font("Arial", 11)
+    Dim totalFont As New Font("Arial", 13, FontStyle.Bold)
+
+    ' Page width
+    Dim pageWidth As Integer = e.PageBounds.Width
+
+    ' Center format
+    Dim centerFormat As New StringFormat()
+    centerFormat.Alignment = StringAlignment.Center
+
+    ' Right align format
+    Dim rightFormat As New StringFormat()
+    rightFormat.Alignment = StringAlignment.Far
+
+    ' Left align format
+    Dim leftFormat As New StringFormat()
+    leftFormat.Alignment = StringAlignment.Near
+
+    ' === HEADER ===
+    g.DrawString("AUTO RECEIPT", titleFont, Brushes.Black, pageWidth / 2, y, centerFormat)
+    y += 35
+
+    g.DrawString("VB Auto Center", headerFont, Brushes.Black, pageWidth / 2, y, centerFormat)
+    y += 30
+
+    ' Divider line
+    g.DrawLine(Pens.Black, 20, y, pageWidth - 20, y)
+    y += 20
+
+    ' Column positions
+    Dim leftX As Integer = 20
+    Dim rightX As Integer = pageWidth - 20
+
+    ' === BODY ===
+    DrawLineItem(g, "Base Price:", txtBasePrice.Text, bodyFont, leftX, rightX, y)
+    y += 25
+
+    DrawLineItem(g, "Accessories & Finish:", lblAccessoriesFinish.Text, bodyFont, leftX, rightX, y)
+    y += 25
+
+    DrawLineItem(g, "Tax:", lblTax.Text, bodyFont, leftX, rightX, y)
+    y += 25
+
+    DrawLineItem(g, "Subtotal:", lblSubtotal.Text, bodyFont, leftX, rightX, y)
+    y += 25
+
+    DrawLineItem(g, "Trade-In:", txtTradeIn.Text, bodyFont, leftX, rightX, y)
+    y += 30
+
+    ' Divider before total
+    g.DrawLine(Pens.Black, 20, y, pageWidth - 20, y)
+    y += 20
+
+    ' === TOTAL ===
+    g.DrawString("TOTAL DUE:", totalFont, Brushes.Black, leftX, y)
+    g.DrawString(lblTotalDue.Text, totalFont, Brushes.Black, rightX, y, rightFormat)
+    y += 40
+
+    ' Footer line
+    g.DrawLine(Pens.Black, 20, y, pageWidth - 20, y)
+  End Sub
+
+  ' Helper method for aligned rows
+  Private Sub DrawLineItem(g As Graphics, label As String, value As String, font As Font, leftX As Integer, rightX As Integer, y As Integer)
+      Dim rightFormat As New StringFormat()
+      rightFormat.Alignment = StringAlignment.Far
+  
+      g.DrawString(label, font, Brushes.Black, leftX, y)
+      g.DrawString(value, font, Brushes.Black, rightX, y, rightFormat)
+  End Sub
 
 End Class
